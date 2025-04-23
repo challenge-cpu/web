@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeshwasCTF: Login Lock</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #00cc99;
+        }
+        .login-box {
+            margin-top: 20px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        input {
+            display: block;
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            background-color: #1c2526;
+            border: 1px solid #00cc99;
+            color: #e0e0e0;
+            border-radius: 3px;
+        }
+        button {
+            background-color: transparent;
+            color: #00cc99;
+            border: 1px solid #00cc99;
+            padding: 8px 16px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #00cc99;
+            color: #121212;
+        }
+        #result {
+            margin-top: 20px;
+            color: #ff4d4d;
+        }
+    </style>
+</head>
+<body>
+    <h1>PeshwasCTF Login Challenge</h1>
+    <p>Unlock the secret with the right credentials.</p>
+    <!-- Secret credentials: username: cyberpeshwa, password: hackthefort -->
+    <div class="login-box">
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="checkLogin()">Login</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        function checkLogin() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const result = document.getElementById("result");
+
+            if (username === "cyberpeshwa" && password === "hackthefort") {
+                result.style.color = "#00cc99";
+                result.textContent = "PeshwasCTF{l3g3nd_unlock3d}";
+            } else {
+                result.style.color = "#ff4d4d";
+                result.textContent = "Access Denied. Try again.";
+            }
+        }
+    </script>
+</body>
+</html>
