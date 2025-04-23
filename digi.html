@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CTF Challenge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        input[type="text"] {
+            padding: 8px;
+            margin: 10px 0;
+            width: 200px;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <p>Email: john.doe123@gmail.com</p>
+        <input type="text" id="passwordInput" placeholder="Enter password">
+        <br>
+        <button onclick="checkPassword()">Submit</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            const result = document.getElementById('result');
+            
+            const expected = [83, 116, 114, 101, 97, 109, 83, 112, 104, 101, 114, 101, 50, 48, 50, 53]
+                .map(c => String.fromCharCode(c)).join('');
+          
+            const success = [80, 101, 115, 104, 119, 97, 115, 67, 84, 70, 123, 101, 109, 64, 105, 108, 
+                95, 115, 112, 111, 111, 102, 51, 100, 125]
+                .map(c => String.fromCharCode(c)).join('');
+
+            if (input === expected) {
+                result.style.color = 'green';
+                result.textContent = success;
+            } else {
+                result.style.color = 'red';
+                result.textContent = 'Incorrect password. Try again.';
+            }
+        }
+    </script>
+</body>
+</html>
